@@ -39,8 +39,7 @@ int	print_adr(unsigned long int nb)
 	int	len;
 
 	len = 0;
-	len += write(1, "0x", 2);
-		len = 0;
+	//len += write(1, "0x", 2);
 		if (nb >= 16)
 		{
 			len += print_adr(nb / 16);

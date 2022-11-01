@@ -40,11 +40,11 @@ int	ft_checker(char c, va_list *ptr)
 	if (c == 'p')
 	{
 		p = va_arg(*ptr, unsigned long int);	
-		if ((void *)p == NULL)
+		if (!p)
 			len += print_str((char *)PTR_NULL);
 		else
 		{
-
+len += write(1, "0x", 2);
 			len += print_adr(p);
 		}
 	}

@@ -15,9 +15,12 @@
 
 int	main(void)
 {
+	//ft_printf("d=%d=", 232322);
+	//ft_printf("d=%d=", ft_printf("p=%p=", 123323));
 	//ft_printf("d=%d\n",ft_printf(NULL));
-	ft_printf("d=%p", ft_printf("%p", NULL));
+	ft_printf("d=%d\n", ft_printf("%p\n", NULL));
+	//ft_printf("d=%d=", ft_printf(".%s.", "heee"));
 	//printf ("d=%d",printf("%s",NULL));
-	//printf("d=%s\n",printf(NULL));
+	//printf("d=%d\n",printf("aa=%s %c\n", "1234", 76));
 	return (0);
 }
