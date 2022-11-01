@@ -44,7 +44,7 @@ int	ft_checker(char c, va_list *ptr)
 			len += print_str((char *)PTR_NULL);
 		else
 		{
-len += write(1, "0x", 2);
+			len += write(1, "0x", 2);
 			len += print_adr(p);
 		}
 	}
