@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:52:37 by huaydin           #+#    #+#             */
-/*   Updated: 2022/11/02 19:42:45 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/11/02 19:54:32 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	print_number(int nb, int *ptr_len)
 {
 	if (nb == -2147483648)
 	{
-		print_char('-', ptr_len);
-		print_char('2', ptr_len);
+		*ptr_len += write(1, "-2", 2);
 		nb = 147483648;
 	}
 	if (nb < 0)
