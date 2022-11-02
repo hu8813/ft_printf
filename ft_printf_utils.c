@@ -20,11 +20,8 @@ void	print_char(char c, int *ptr_len)
 void	print_number(int nb, int *ptr_len)
 {
 	if (nb == -2147483648)
-	{
-		*ptr_len += write(1, "-2", 2);
-		nb = 147483648;
-	}
-	if (nb < 0)
+		*ptr_len += write(1, "-2147483648", 11);
+	else if (nb < 0)
 	{
 		print_char('-', ptr_len);
 		nb *= -1;
@@ -34,7 +31,7 @@ void	print_number(int nb, int *ptr_len)
 		print_number(nb / 10, ptr_len);
 		print_number(nb % 10, ptr_len);
 	}
-	if (nb < 10)
+	if (nb < 10 && nb >= 0)
 		print_char(nb + '0', ptr_len);
 }
 
