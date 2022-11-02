@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:51:47 by huaydin           #+#    #+#             */
-/*   Updated: 2022/11/02 21:44:48 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/11/02 21:52:45 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_printf(const char *format, ...)
 		if (*format != '%')
 			len += write(1, &*format, 1);
 		if (*format == '%')
-			ft_format(*(++format), &ap, ptr_len);
+			ft_format(*++format, &ap, ptr_len);
 		format++;
 	}
 	va_end(ap);
