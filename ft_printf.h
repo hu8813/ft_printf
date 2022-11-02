@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:52:03 by huaydin           #+#    #+#             */
-/*   Updated: 2022/11/02 18:15:35 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/11/02 19:48:12 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 #  define PTR_NULL "(nil)"
 # endif
 
-int		print_number(int nb);
-int		print_char(char c);
-void	ft_checker(char c, va_list *ap, int *ptr_len);
-int		print_adr(unsigned long int nb);
-int		print_unb(unsigned int nb);
+void	print_number(int nb, int *ptr_len);
+void	print_char(char c, int *ptr_len);
+void	ft_switch(char c, va_list *ap, int *ptr_len);
+void	print_adr(unsigned long int nb, int *ptr_len);
+void	print_unb(unsigned int nb, int *ptr_len);
 void	print_hex(unsigned int nb, char c, int *ptr_len);
-int		print_str(char *str);
+void	print_str(char *str, int *ptr_len);
 int		ft_printf(const char *format, ...);
 #endif

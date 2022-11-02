@@ -6,44 +6,47 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:51:47 by huaydin           #+#    #+#             */
-/*   Updated: 2022/11/02 18:16:06 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/11/02 19:47:23 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(char c)
+void	print_str(char *str, int *ptr_len)
 {
-	return (write(1, &c, 1));
+	if (!str)
+		str = "(null)";
+	while (*str)
+		*ptr_len += write(1, str++, 1);
 }
 
-void	ft_checker(char c, va_list *ap, int *ptr_len)
+void	ft_switch(char c, va_list *ap, int *ptr_len)
 {
 	unsigned long int	p;
 
 	if (c == 'c')
-		*ptr_len += print_char(va_arg(*ap, int));
+		print_char(va_arg(*ap, int), ptr_len);
 	if (c == '%')
 		*ptr_len += write(1, "%", 1);
 	if (c == 'd' || c == 'i')
-		*ptr_len += print_number(va_arg(*ap, int));
+		print_number(va_arg(*ap, int), ptr_len);
 	if (c == 'u')
-		*ptr_len += print_unb(va_arg(*ap, unsigned int));
+		print_unb(va_arg(*ap, unsigned int), ptr_len);
 	if (c == 'x' || c == 'X')
 		print_hex(va_arg(*ap, unsigned int), c, ptr_len);
 	if (c == 'p')
 	{
 		p = va_arg(*ap, unsigned long int);
 		if (!p)
-			*ptr_len += print_str((char *)PTR_NULL);
+			print_str((char *)PTR_NULL, ptr_len);
 		else
 		{
 			*ptr_len += write(1, "0x", 2);
-			*ptr_len += print_adr(p);
+			print_adr(p, ptr_len);
 		}
 	}
 	if (c == 's')
-		*ptr_len += print_str(va_arg(*ap, char *));
+		print_str(va_arg(*ap, char *), ptr_len);
 }
 
 int	ft_printf(const char *format, ...)
@@ -60,10 +63,7 @@ int	ft_printf(const char *format, ...)
 		if (*format != '%')
 			len += write(1, &*format, 1);
 		if (*format == '%')
-		{
-			ft_checker(*(format + 1), &ap, ptr_len);
-			format++;
-		}
+			ft_switch(*(format++ + 1), &ap, ptr_len);
 		format++;
 	}
 	va_end(ap);
