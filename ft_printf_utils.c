@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:52:37 by huaydin           #+#    #+#             */
-/*   Updated: 2022/11/02 21:36:20 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/11/02 22:19:51 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,7 @@ void	print_address(unsigned long int nb, int *ptr_len)
 		print_address(nb % 16, ptr_len);
 	}
 	if (nb < 16)
-	{
-		if (nb < 10)
-			ft_putchar(nb + '0', ptr_len);
-		else
-			ft_putchar(nb + 'a' - 10, ptr_len);
-	}
+		ft_putchar("0123456789abcdef"[nb], ptr_len);
 }
 
 void	print_unsigned(unsigned int nb, int *ptr_len)
@@ -71,11 +66,9 @@ void	print_hexademical(unsigned int nb, char c, int *ptr_len)
 	}
 	if (nb < 16)
 	{
-		if (nb < 10)
-			ft_putchar(nb + '0', ptr_len);
-		else if (c == 'x' && nb >= 10)
-			ft_putchar(nb + 'a' - 10, ptr_len);
-		else if (c == 'X' && nb >= 10)
-			ft_putchar(nb + 'A' - 10, ptr_len);
+		if (c == 'x')
+			ft_putchar("0123456789abcdef"[nb], ptr_len);
+		else if (c == 'X')
+			ft_putchar("0123456789ABCDEF"[nb], ptr_len);
 	}
 }
