@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printer.c                                       :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huaydin <huaydin@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:52:37 by huaydin           #+#    #+#             */
-/*   Updated: 2022/11/01 10:52:39 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/11/02 18:56:27 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,41 @@ int	print_number(int nb)
 		len += print_number(n % 10);
 	}
 	if (n < 10)
-		len += print_char(n + 48);
+		len += print_char(n + '0');
 	return (len);
 }
 
 int	print_adr(unsigned long int nb)
 {
-	int	len;
+	int		len;
+	char	c;
 
 	len = 0;
-	//len += write(1, "0x", 2);
-		if (nb >= 16)
+	if (nb >= 16)
+	{
+		len += print_adr(nb / 16);
+		len += print_adr(nb % 16);
+	}
+	if (nb < 16)
+	{
+		if (nb < 10)
 		{
-			len += print_adr(nb / 16);
-			len += print_adr(nb % 16);
+			c = nb + '0';
+			len += write(1, &c, 1);
 		}
-		if (nb < 16)
+		else
 		{
-			if (nb < 10)
-				len += print_char(nb + 48);
-			else
-				len += print_char(nb + 87);
+			c = nb + 'a' - 10;
+			len += write(1, &c, 1);
 		}
-		return (len);
+	}
+	return (len);
 }
 
 int	print_unb(unsigned int nb)
 {
-	int	len;
+	int		len;
+	char	c;
 
 	len = 0;
 	if (nb >= 10)
@@ -66,33 +73,40 @@ int	print_unb(unsigned int nb)
 		len += print_unb(nb % 10);
 	}
 	if (nb < 10)
-		len += print_char(nb + 48);
+	{
+		c = nb + '0';
+		len += write(1, &c, 1);
+	}	
 	return (len);
 }
 
-int	print_hex(unsigned int nb, int s)
+void	print_hex(unsigned int nb, char c, int *ptr_len)
 {
-	int	len;
+	char	ch;
 
-	len = 0;
 	if (nb >= 16)
 	{
-		len += print_hex(nb / 16, s);
-		len += print_hex(nb % 16, s);
+		print_hex(nb / 16, c, ptr_len);
+		print_hex(nb % 16, c, ptr_len);
 	}
 	if (nb < 16)
 	{
 		if (nb < 10)
-			len += print_char(nb + 48);
-		else
 		{
-			if (s == 1)
-				len += print_char(nb + 87);
-			else
-				len += print_char(nb + 55);
+			ch = nb + '0';
+			*ptr_len += write(1, &ch, 1);
+		}
+		else if (c == 'x' && nb >= 10)
+		{
+				ch = nb + 'a' - 10;
+				*ptr_len += write(1, &ch, 1);
+		}	
+		else if (c == 'X' && nb >= 10)
+		{
+				ch = nb + 'A' - 10;
+				*ptr_len += write(1, &ch, 1);
 		}
 	}
-	return (len);
 }
 
 int	print_str(char *str)
