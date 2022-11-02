@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:51:47 by huaydin           #+#    #+#             */
-/*   Updated: 2022/11/02 22:29:50 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/11/02 22:47:27 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,21 @@ int	main(void)
 	ft_printf("\n");
 	ft_printf("len=%d\n", ft_printf("%d\n", INT_MIN));
 	printf("len=%d\n", printf("%d\n", INT_MIN));
+	ft_printf("\n");
+	ft_printf("len=%d\n", ft_printf("%s\n", NULL));
+	printf("len=%d\n", printf("%s\n", NULL));
+	ft_printf("\n");
+	ft_printf("len=%d\n", ft_printf("%x\n", NULL));
+	printf("len=%d\n", printf("%x\n", NULL));
+	ft_printf("\n");
+	ft_printf("len=%d\n", ft_printf("%u\n", NULL));
+	printf("len=%d\n", printf("%u\n", NULL));
+	ft_printf("\n");
+	ft_printf("len=%d\n", ft_printf("%d\n", LONG_MIN));
+	printf("len=%d\n", printf("%d\n", LONG_MIN));
+	ft_printf("\n");
+	ft_printf("len=%d\n", ft_printf("%d\n", LONG_MAX));
+	printf("len=%d\n", printf("%d\n", LONG_MAX));
 	return (0);
 }
 */
