@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:51:47 by huaydin           #+#    #+#             */
-/*   Updated: 2022/11/02 21:52:45 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/11/02 22:08:06 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,18 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (len);
 }
+/*
+#include <limits.h>
+#include <stdio.h>
+
+int	main(void)
+{
+	ft_printf("d=%d\n", ft_printf("aa %s gae %% ae\n", "aegea %% ae f"));
+	printf("len=%d\n", printf("aa %s gae %% ae\n", "aegea %% ae f"));
+	ft_printf("len=%d\n", ft_printf("%p\n", NULL));
+	printf("len=%d\n", printf("%p\n", NULL));
+	ft_printf("len=%d\n", ft_printf("%d\n", INT_MIN));
+	printf("len=%d\n", printf("%d\n", INT_MIN));
+	return (0);
+}
+*/
