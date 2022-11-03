@@ -51,7 +51,7 @@ void	ft_format(char c, va_list *ap, int *ptr_len)
 
 int	ft_printf(const char *format, ...)
 {
-	int		len;
+	int	len;
 	va_list	ap;
 
 	len = 0;
