@@ -52,18 +52,16 @@ void	ft_format(char c, va_list *ap, int *ptr_len)
 int	ft_printf(const char *format, ...)
 {
 	int		len;
-	int		*ptr_len;
 	va_list	ap;
 
 	len = 0;
-	ptr_len = &len;
 	va_start(ap, format);
 	while (*format)
 	{
 		if (*format != '%')
 			len += write(1, &*format, 1);
 		if (*format == '%')
-			ft_format(*++format, &ap, ptr_len);
+			ft_format(*++format, &ap, &len);
 		format++;
 	}
 	va_end(ap);
