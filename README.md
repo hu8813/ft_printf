@@ -4,7 +4,7 @@ In the C programming language, the `va_args` macro is used to access arguments o
 
 Here is an example of how `va_args` can be used in a C program:
 
-
+```c
     #include <stdarg.h>
     
     // Function with a variable number of arguments
@@ -30,7 +30,7 @@ Here is an example of how `va_args` can be used in a C program:
       print_numbers(3, 1, 2, 3);
       return 0;
     } 
-
+```
 In this example, the `print_numbers` function takes a variable number of arguments, and uses the `va_args` macro to iterate over them and print their values. The function uses the `va_start` macro to initialize the `va_list` with the first argument after the `num` argument, and then uses the `va_arg` macro to access each argument in turn. When finished, the function uses the `va_end` macro to clean up the `va_list`.
 
 By using `va_args` and the other `va_*` macros, you can easily access and work with a variable number of arguments in a C function. This can be useful in situations where the number and types of arguments are not known until runtime.
