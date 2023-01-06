@@ -73,6 +73,11 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
+	int	i = 42;
+	
+	ft_printf("len=%d\n", ft_printf("%p\n", &i));
+	printf("len=%d\n", printf("%p\n", &i));
+	ft_printf("\n");
 	ft_printf("len=%d\n", ft_printf("aa %s gae %% ae\n", "aegea %% ae f"));
 	printf("len=%d\n", printf("aa %s gae %% ae\n", "aegea %% ae f"));
 	ft_printf("\n");
