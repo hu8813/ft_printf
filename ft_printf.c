@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:51:47 by huaydin           #+#    #+#             */
-/*   Updated: 2023/01/07 15:33:00 by huaydin          ###   ########.fr       */
+/*   Updated: 2023/01/07 15:33:24 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	int	i = 42;
+	int	i;
+
+	i = 42;
 	
 	ft_printf("len=%d\n", ft_printf("%p\n", &i));
 	printf("len=%d\n", printf("%p\n", &i));
